@@ -1,0 +1,43 @@
+{
+  name: "shipu/bkash",
+  description: "PHP client for Bkash Payment Gateway API",
+  keywords: [
+    "bkash",
+    "php",
+    "api",
+    "gateway",
+    "laravel",
+    "lumen"
+  ],
+  type: "library",
+  require: {
+    php: ">=5.5.9"
+  },
+  license: "CC(1.0)",
+  authors: [
+    {
+      name: "Shipu Ahamed",
+      email: "shipuahamed01@gmail.com"
+    }
+  ],
+  autoload: {
+    psr-4: {
+      Shipu\Bkash\: "src/"
+    },
+    files: [
+      "src/helpers.php"
+    ]
+  },
+  minimum-stability: "dev",
+  prefer-stable: true,
+  extra: {
+    laravel: {
+      providers: [
+        "Shipu\Bkash\BkashServiceProvider"
+      ],
+      aliases: {
+        Bkash: "Shipu\Bkash\Facades\Bkash"
+      }
+    }
+  }
+}
