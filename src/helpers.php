@@ -9,3 +9,7 @@
 function test() {
     dd("hha ha ha");
 }
+
+function shipu() {
+    dd("shipu");
+}

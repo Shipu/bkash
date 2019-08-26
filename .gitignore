@@ -1,1 +1,4 @@
 /vendor/
+/example
+.DS_Store
+.idea
