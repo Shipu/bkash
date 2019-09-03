@@ -2,8 +2,6 @@
 
 namespace Shipu\Bkash\Apis\Tokenized;
 
-use Apiz\AbstractApi;
-use Shipu\Bkash\Enums\BkashSubDomainType;
 use Shipu\Bkash\Enums\BkashKey;
 
 /**

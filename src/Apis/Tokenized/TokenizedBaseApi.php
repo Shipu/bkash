@@ -3,7 +3,6 @@
 namespace Shipu\Bkash\Apis\Tokenized;
 
 use Shipu\Bkash\Apis\BaseApi;
-use Shipu\Bkash\Traits\SetAuthorizationHeader;
 use Shipu\Bkash\Traits\TokenApi;
 
 /**

@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Shipu\Bkash\Apis\Tokenized;
-
 
 /**
  * Class GeneralApi
