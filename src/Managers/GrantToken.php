@@ -7,8 +7,15 @@ use Shipu\Bkash\Apis\Payment\PaymentBaseApi;
 use Shipu\Bkash\Apis\Tokenized\TokenizedBaseApi;
 use Shipu\Bkash\Enums\BkashSubDomainType;
 
+/**
+ * Class GrantToken
+ * @package Shipu\Bkash\Managers
+ */
 class GrantToken
 {
+    /**
+     * @var PaymentBaseApi
+     */
     protected $tokenApi;
 
     /**
@@ -31,11 +38,20 @@ class GrantToken
                 break;
         }
     }
+
+    /**
+     * @return mixed
+     */
     public function grantToken()
     {
         return $this->tokenApi->grantToken();
     }
 
+    /**
+     * @param $refreshToken
+     *
+     * @return mixed
+     */
     public function refreshToken($refreshToken)
     {
         return $this->tokenApi->refreshToken($refreshToken);

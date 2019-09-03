@@ -6,32 +6,65 @@ namespace Shipu\Bkash\Apis;
 
 use Apiz\AbstractApi;
 use Shipu\Bkash\Enums\BkashSubDomainType;
-use Shipu\Bkash\Enums\BkashEnum;
+use Shipu\Bkash\Enums\BkashKey;
 use Shipu\Bkash\Response\BkashResponse;
 
+/**
+ * Class BaseApi
+ * @package Shipu\Bkash\Apis
+ */
 abstract class BaseApi extends AbstractApi
 {
+    /**
+     * @var string
+     */
     protected $subDomain = '';
 
+    /**
+     * @var string
+     */
     protected $env = 'sandbox';
 
+    /**
+     * @var string
+     */
     protected $response = BkashResponse::class;
 
+    /**
+     * @var
+     */
     protected $config;
 
+    /**
+     * @var
+     */
     protected $token;
 
+    /**
+     * @var bool
+     */
     protected $authorization = false;
 
+    /**
+     * @return mixed
+     */
     abstract protected function subDomain();
 
+    /**
+     * @return mixed
+     */
     abstract protected function urlPrefix();
 
+    /**
+     * BaseApi constructor.
+     *
+     * @param $config
+     */
     public function __construct( $config )
     {
         $this->subDomain = $this->subDomain();
-        $this->env = $config[BkashEnum::SANDBOX] ? 'sandbox' : 'pay';
-        $this->prefix = '/'. $config[BkashEnum::VERSION]. $this->urlPrefix();
+        $this->env = $config[BkashKey::SANDBOX] ? 'sandbox' : 'pay';
+        $this->prefix = '/'. $config[BkashKey::VERSION]. $this->urlPrefix();
         $this->config = $config;
 
         parent::__construct();
@@ -49,11 +82,16 @@ abstract class BaseApi extends AbstractApi
         return "https://".$api.".bka.sh";
     }
 
+    /**
+     * @param $token
+     *
+     * @return AbstractApi|bool
+     */
     public function authorization($token)
     {
         return $this->headers([
             'Authorization' => $token,
-            'X-APP-Key' => $this->config[BkashEnum::APP_KEY]
+            'X-APP-Key' => $this->config[BkashKey::APP_KEY]
         ]);
     }
 }

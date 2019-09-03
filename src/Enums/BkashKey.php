@@ -2,7 +2,7 @@
 
 namespace Shipu\Bkash\Enums;
 
-interface BkashEnum
+interface BkashKey
 {
     const  SANDBOX       = "sandbox";
     const  VERSION       = "version";
