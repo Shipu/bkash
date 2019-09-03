@@ -3,13 +3,9 @@
 use Shipu\Bkash\Enums\BkashKey;
 use Shipu\Bkash\Enums\BkashSubDomainType;
 
-require '../vendor/autoload.php';
+require_once './composer_load.php';
 
-$dotenv = \Dotenv\Dotenv::create(__DIR__.'/../');
-$dotenv->load();
-
-$config = include('../config/bkash.php');
-$tokenized = new Shipu\Bkash\Managers\Tokenized($config[BkashSubDomainType::TOKENIZED]);
+$tokenized = new Shipu\Bkash\Managers\Tokenized($config[BkashSubDomainType::CHECKOUT]);
 
 $data = $_GET;
 
@@ -24,13 +20,13 @@ if($data['execute'] == 'Agreement') {
         'failed_url' => $data['failed_url']
     ];
 
-    $callbackUrl = $config[BkashSubDomainType::TOKENIZED][BkashKey::CALL_BACK_URL].'?'.http_build_query($data);
+    $callbackUrl = $config[BkashSubDomainType::CHECKOUT][BkashKey::CALL_BACK_URL].'?'.http_build_query($data);
 
     // Save Agreement Id ($agreement->agreementID)
     $createPayment = $tokenized->createPayment(
         $agreement->agreementID,
         $data['amount'],
-        $data['order_code'],
+        $data['ref_no'],
         $callbackUrl
     );
 

@@ -3,12 +3,8 @@
 use Shipu\Bkash\Enums\BkashKey;
 use Shipu\Bkash\Enums\BkashSubDomainType;
 
-require '../vendor/autoload.php';
+require_once './../composer_load.php';
 
-$dotenv = \Dotenv\Dotenv::create(__DIR__.'/../');
-$dotenv->load();
-
-$config = include('../config/bkash.php');
 $tokenized = new Shipu\Bkash\Managers\Tokenized($config[BkashSubDomainType::TOKENIZED]);
 
 $data = $_POST;
