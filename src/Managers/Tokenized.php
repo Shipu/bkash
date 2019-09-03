@@ -138,14 +138,16 @@ class Tokenized extends BkashManager
         return $response();
     }
 
+
     /**
      * @param $payerReference
+     * @param null $callbackUrl
      *
      * @return mixed
      */
-    public function createAgreement( $payerReference )
+    public function createAgreement( $payerReference, $callbackUrl = null )
     {
-        $response = $this->agreementApi->authorization($this->getToken())->create($payerReference);
+        $response = $this->agreementApi->authorization($this->getToken())->create($payerReference, $callbackUrl);
 
         return $response();
     }
@@ -157,7 +159,7 @@ class Tokenized extends BkashManager
      */
     public function executeAgreement( $paymentId )
     {
-        $response = $this->agreementApi->authorization($this->getToken())->create($paymentId);
+        $response = $this->agreementApi->authorization($this->getToken())->execute($paymentId);
 
         return $response();
     }
@@ -198,10 +200,10 @@ class Tokenized extends BkashManager
      *
      * @return mixed
      */
-    public function createPayment( $agreementId, $amount, $merchantInvoiceNumber, $intent, $currency = 'BDT', $callbackUrl = null )
+    public function createPayment( $agreementId, $amount, $merchantInvoiceNumber, $callbackUrl = null, $intent = 'sale', $currency = 'BDT' )
     {
         $response = $this->paymentApi->authorization($this->getToken())->create(
-            $agreementId, $amount, $merchantInvoiceNumber, $intent, $currency, $callbackUrl
+            $agreementId, $amount, $merchantInvoiceNumber, $callbackUrl, $intent, $currency
         );
 
         return $response();

@@ -22,7 +22,7 @@ class PaymentApi extends TokenizedBaseApi
      *
      * @return mixed
      */
-    public function create($agreementId, $amount, $merchantInvoiceNumber, $intent, $currency = 'BDT', $callbackUrl = null)
+    public function create($agreementId, $amount, $merchantInvoiceNumber, $callbackUrl = null, $intent = 'sale', $currency = 'BDT')
     {
         return $this->json([
             'agreementID' => $agreementId,

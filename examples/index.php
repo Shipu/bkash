@@ -9,6 +9,7 @@
 </head>
 <body>
 <?php
+    $payerReference = '01770618575';
     $orders = [
         [
             'code'   => 'Order001',
@@ -19,7 +20,7 @@
             'amount' => '7'
         ],
         [
-            'code'   => 'Order001',
+            'code'   => 'Order003',
             'amount' => '10'
         ],
     ];
@@ -38,9 +39,12 @@
                 <td><?=$order['code']?></td>
                 <td><?=$order['amount']?></td>
                 <td>
-                    <form method="POST" action="">
-                        <input type="hidden" name="order_id" value="<?=$order['code']?>">
-                        <input type="hidden" name="order_id" value="<?=$order['amount']?>">
+                    <form method="POST" action="action.php">
+                        <input type="hidden" name="payerReference" value="<?=$payerReference?>">
+                        <input type="hidden" name="order_code" value="<?=$order['code']?>">
+                        <input type="hidden" name="amount" value="<?=$order['amount']?>">
+                        <input type="hidden" name="success_url" value="http://localhost:8003?status=success">
+                        <input type="hidden" name="failed_url" value="http://localhost:8003?status=failed">
                         <button type="submit">Pay with bKash Tokenized</button>
                     </form>
                 </td>

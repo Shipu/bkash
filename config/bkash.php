@@ -1,9 +1,10 @@
 <?php
 
 use Shipu\Bkash\Enums\BkashKey;
+use Shipu\Bkash\Enums\BkashSubDomainType;
 
 return [
-    "tokenize" => [
+    BkashSubDomainType::TOKENIZED => [
         BkashKey::SANDBOX       => env("BKASH_TOKENIZE_SANDBOX", true),
         BkashKey::VERSION       => env("BKASH_TOKENIZE_VERSION", "v1.2.0-beta"),
         BkashKey::APP_KEY       => env("BKASH_TOKENIZE_APP_KEY", ""),
@@ -12,8 +13,13 @@ return [
         BkashKey::PASSWORD      => env("BKASH_TOKENIZE_PASSWORD", ""),
         BkashKey::CALL_BACK_URL => env("BKASH_TOKENIZE_CALL_BACK_URL", ""),
     ],
-    'checkout' => [
+    BkashSubDomainType::CHECKOUT => [
         BkashKey::SANDBOX       => env("BKASH_CHECKOUT_SANDBOX", true),
         BkashKey::VERSION       => env("BKASH_CHECKOUT_VERSION", "v1.2.0-beta"),
-    ]
+    ],
+    BkashSubDomainType::PAYMENT => [
+        BkashKey::SANDBOX       => env("BKASH_PAYMENT_SANDBOX", true),
+        BkashKey::VERSION       => env("BKASH_PAYMENT_VERSION", "v1.2.0-beta"),
+    ],
+
 ];
