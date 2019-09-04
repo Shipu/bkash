@@ -36,6 +36,7 @@ if($data['execute'] == 'Agreement') {
 
     if($payment->statusCode == '0000') {
         // Save "trxID" & create payment
+        dd($payment->trxID);
         header('Location: '.$data['success_url']);
     } else {
         header('Location: '.$data['failed_url']);

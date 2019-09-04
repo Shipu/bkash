@@ -4,7 +4,7 @@ namespace Shipu\Bkash\Managers;
 
 use Shipu\Bkash\Apis\Tokenized\AgreementApi;
 use Shipu\Bkash\Apis\Tokenized\CheckoutApi;
-use Shipu\Bkash\Apis\Tokenized\GeneralApi;
+use Shipu\Bkash\Apis\Tokenized\SupportApi;
 use Shipu\Bkash\Apis\Tokenized\PaymentApi;
 use Shipu\Bkash\Enums\BkashSubDomainType;
 
@@ -34,9 +34,9 @@ class Tokenized extends BkashManager
 
     /**
      *
-     * @var GeneralApi
+     * @var SupportApi
      */
-    protected $generalApi;
+    protected $supportApi;
 
     /**
      * Tokenized constructor.
@@ -50,7 +50,7 @@ class Tokenized extends BkashManager
         $this->agreementApi = new AgreementApi($config);
         $this->checkoutApi  = new CheckoutApi($config);
         $this->paymentApi   = new PaymentApi($config);
-        $this->generalApi   = new GeneralApi($config);
+        $this->supportApi   = new SupportApi($config);
     }
 
     /**
@@ -88,9 +88,9 @@ class Tokenized extends BkashManager
     /**
      * @return \Apiz\AbstractApi|bool
      */
-    public function general()
+    public function support()
     {
-        return ( new GeneralApi($this->config) )->authorization($this->getToken());
+        return ( new SupportApi($this->config) )->authorization($this->getToken());
     }
 
     /**
@@ -133,7 +133,7 @@ class Tokenized extends BkashManager
      */
     public function searchTransaction( $trxId )
     {
-        $response = $this->generalApi->authorization($this->getToken())->searchTransaction($trxId);
+        $response = $this->supportApi->authorization($this->getToken())->searchTransaction($trxId);
 
         return $response();
     }

@@ -3,10 +3,10 @@
 namespace Shipu\Bkash\Apis\Tokenized;
 
 /**
- * Class GeneralApi
+ * Class SupportApi
  * @package Shipu\Bkash\Apis\Tokenized
  */
-class GeneralApi extends TokenizedBaseApi
+class SupportApi extends TokenizedBaseApi
 {
     /**
      * @param $trxId

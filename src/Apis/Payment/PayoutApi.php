@@ -1,12 +1,13 @@
 <?php
 
-namespace Shipu\Bkash\Apis\Checkout;
+namespace Shipu\Bkash\Apis\Payment;
+
 
 /**
  * Class PayoutApi
- * @package Shipu\Bkash\Apis\CheckoutApi
+ * @package Shipu\Bkash\Apis\Payment
  */
-class PayoutApi extends CheckoutBaseApi
+class PayoutApi extends PaymentBaseApi
 {
     /**
      * @param $amount

@@ -7,7 +7,7 @@ use Shipu\Bkash\Traits\TokenApi;
 
 /**
  * Class CheckoutBaseApi
- * @package Shipu\Bkash\Apis\Checkout
+ * @package Shipu\Bkash\Apis\CheckoutApi
  */
 class CheckoutBaseApi extends BaseApi
 {
