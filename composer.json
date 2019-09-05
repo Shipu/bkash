@@ -30,7 +30,12 @@
         "laravel": {
             "providers": [
                 "Shipu\\Bkash\\BkashServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "Tokenized": "Shipu\\Bkash\\Facades\\Tokenized",
+                "Checkout": "Shipu\\Bkash\\Facades\\Checkout",
+                "Payment": "Shipu\\Bkash\\Facades\\Payment"
+            }
         }
     }
 }
