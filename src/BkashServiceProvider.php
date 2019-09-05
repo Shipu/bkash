@@ -25,7 +25,7 @@ class BkashServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerSslWPayment();
+        $this->registerBkash();
     }
     /**
      * Setup the config.
