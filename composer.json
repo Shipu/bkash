@@ -3,7 +3,7 @@
     "type": "library",
     "require": {
         "php": ">=5.6",
-        "nahid/apiz": "dev-master"
+        "nahid/apiz": "3.0.*"
     },
     "license": "CC-BY-3.0",
     "authors": [

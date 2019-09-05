@@ -65,13 +65,13 @@ use Shipu\Bkash\Managers\Payment;
 
 $config = [
     BkashSubDomainType::TOKENIZED => [
-      BkashKey::SANDBOX       => true/false,
-      BkashKey::VERSION       => "v1.2.0-beta",
-      BkashKey::APP_KEY       => "your app key (bkash will provide when on-boarding)",
-      BkashKey::APP_SECRET    => "your app secret (bkash will provide when on-boarding)",
-      BkashKey::USER_NAME     => "you user name (bkash will provide when on-boarding)",
-      BkashKey::PASSWORD      => "your password (bkash will provide when on-boarding)",
-      BkashKey::CALL_BACK_URL => "your call back url where you can write your logic",
+        BkashKey::SANDBOX       => true/false,
+        BkashKey::VERSION       => "v1.2.0-beta",
+        BkashKey::APP_KEY       => "your app key (bkash will provide when on-boarding)",
+        BkashKey::APP_SECRET    => "your app secret (bkash will provide when on-boarding)",
+        BkashKey::USER_NAME     => "you user name (bkash will provide when on-boarding)",
+        BkashKey::PASSWORD      => "your password (bkash will provide when on-boarding)",
+        BkashKey::CALL_BACK_URL => "your call back url where you can write your logic",
     ],
     BkashSubDomainType::CHECKOUT => [
         BkashKey`::SANDBOX       => true/false,
