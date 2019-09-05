@@ -13,7 +13,7 @@
             <td><?=$order['ref_no']?></td>
             <td><?=$order['amount']?></td>
             <td>
-                <form method="POST" action="./tokenized/action.php">
+                <form method="POST" action="./checkout/action.php">
                     <input type="hidden" name="payerReference" value="<?=$payerReference?>">
                     <input type="hidden" name="ref_no" value="<?=$order['ref_no']?>">
                     <input type="hidden" name="order_code" value="<?=$order['code']?>">
