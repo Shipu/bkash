@@ -5,6 +5,10 @@
         "php": ">=5.6",
         "nahid/apiz": "3.0.*"
     },
+    "require-dev": {
+        "symfony/var-dumper": "^4.3",
+        "vlucas/phpdotenv": "^3.4"
+    },
     "license": "CC-BY-3.0",
     "authors": [
         {
@@ -22,8 +26,11 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "require-dev": {
-        "symfony/var-dumper": "^4.3",
-        "vlucas/phpdotenv": "^3.4"
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Shipu\\Bkash\\BkashServiceProvider"
+            ]
+        }
     }
 }
