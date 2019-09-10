@@ -6,6 +6,7 @@ use Shipu\Bkash\Apis\Checkout\CheckoutBaseApi;
 use Shipu\Bkash\Apis\Payment\PaymentBaseApi;
 use Shipu\Bkash\Apis\Tokenized\TokenizedBaseApi;
 use Shipu\Bkash\Enums\BkashSubDomainType;
+use Shipu\Bkash\Traits\Macroable;
 
 /**
  * Class GrantToken
@@ -13,6 +14,7 @@ use Shipu\Bkash\Enums\BkashSubDomainType;
  */
 class GrantToken
 {
+    use Macroable;
 
     protected $tokenApi;
 

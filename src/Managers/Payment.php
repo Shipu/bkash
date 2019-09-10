@@ -8,6 +8,7 @@ use Shipu\Bkash\Apis\Payment\MandateApi;
 use Shipu\Bkash\Apis\Payment\PayoutApi;
 use Shipu\Bkash\Apis\Payment\SupportApi;
 use Shipu\Bkash\Enums\BkashSubDomainType;
+use Shipu\Bkash\Traits\Macroable;
 
 /**
  * Class Tokenized
@@ -15,6 +16,7 @@ use Shipu\Bkash\Enums\BkashSubDomainType;
  */
 class Payment extends BkashManager
 {
+    use Macroable;
     /**
      *
      * @var DirectApi

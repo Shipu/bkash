@@ -4,7 +4,6 @@ namespace Shipu\Bkash\Managers;
 
 use Shipu\Bkash\Enums\BkashKey;
 use Shipu\Bkash\Response\BkashResponse;
-use Shipu\Bkash\Traits\Macroable;
 
 /**
  * Class BkashManager
@@ -12,7 +11,6 @@ use Shipu\Bkash\Traits\Macroable;
  */
 abstract class BkashManager
 {
-    use Macroable;
 
     /**
      * @var
