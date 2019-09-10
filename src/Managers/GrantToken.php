@@ -13,9 +13,7 @@ use Shipu\Bkash\Enums\BkashSubDomainType;
  */
 class GrantToken
 {
-    /**
-     * @var PaymentBaseApi
-     */
+
     protected $tokenApi;
 
     /**
@@ -26,7 +24,7 @@ class GrantToken
      */
     public function __construct( $type, $config )
     {
-        switch ($type) {
+        switch ( $type ) {
             case BkashSubDomainType::TOKENIZED:
                 $this->tokenApi = new TokenizedBaseApi($config);
                 break;
@@ -52,7 +50,7 @@ class GrantToken
      *
      * @return mixed
      */
-    public function refreshToken($refreshToken)
+    public function refreshToken( $refreshToken )
     {
         return $this->tokenApi->refreshToken($refreshToken);
     }

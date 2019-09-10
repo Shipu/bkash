@@ -17,7 +17,7 @@ class BkashResponse extends Response
      * @return \Nahid\QArray\QueryEngine
      * @throws \Nahid\QArray\Exceptions\ConditionNotAllowedException
      */
-    public function response($code = null, $data = null)
+    public function response( $code = null, $data = null )
     {
         return $this->query()->collect([
             'code' => $code ?: $this->getStatusCode(),

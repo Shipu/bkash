@@ -13,11 +13,17 @@ class TokenizedBaseApi extends BaseApi
 {
     use TokenableApi;
 
+    /**
+     * @return mixed|string
+     */
     protected function subDomain()
     {
         return 'tokenized';
     }
 
+    /**
+     * @return mixed|string
+     */
     protected function urlPrefix()
     {
         return '/tokenized/checkout/';

@@ -1,11 +1,8 @@
 <?php
 
-
 namespace Shipu\Bkash\Apis;
 
-
 use Apiz\AbstractApi;
-use Shipu\Bkash\Enums\BkashSubDomainType;
 use Shipu\Bkash\Enums\BkashKey;
 use Shipu\Bkash\Response\BkashResponse;
 
@@ -45,6 +42,21 @@ abstract class BaseApi extends AbstractApi
     protected $authorization = false;
 
     /**
+     * BaseApi constructor.
+     *
+     * @param $config
+     */
+    public function __construct( $config )
+    {
+        $this->subDomain = $this->subDomain();
+        $this->env       = $config[ BkashKey::SANDBOX ] ? 'sandbox' : 'pay';
+        $this->prefix    = '/' . $config[ BkashKey::VERSION ] . $this->urlPrefix();
+        $this->config    = $config;
+
+        parent::__construct();
+    }
+
+    /**
      * @return mixed
      */
     abstract protected function subDomain();
@@ -55,30 +67,15 @@ abstract class BaseApi extends AbstractApi
     abstract protected function urlPrefix();
 
     /**
-     * BaseApi constructor.
-     *
-     * @param $config
-     */
-    public function __construct( $config )
-    {
-        $this->subDomain = $this->subDomain();
-        $this->env = $config[BkashKey::SANDBOX] ? 'sandbox' : 'pay';
-        $this->prefix = '/'. $config[BkashKey::VERSION]. $this->urlPrefix();
-        $this->config = $config;
-
-        parent::__construct();
-    }
-
-    /**
      * set base URL for guzzle client
      *
      * @return string
      */
     public function baseUrl()
     {
-        $api = $this->subDomain . ".". $this->env;
+        $api = $this->subDomain . "." . $this->env;
 
-        return "https://".$api.".bka.sh";
+        return "https://" . $api . ".bka.sh";
     }
 
     /**
@@ -86,11 +83,11 @@ abstract class BaseApi extends AbstractApi
      *
      * @return AbstractApi|bool
      */
-    public function authorization($token)
+    public function authorization( $token )
     {
         return $this->headers([
             'Authorization' => $token,
-            'X-APP-Key' => $this->config[BkashKey::APP_KEY]
+            'X-APP-Key'     => $this->config[ BkashKey::APP_KEY ]
         ]);
     }
 }

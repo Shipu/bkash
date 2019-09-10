@@ -25,13 +25,13 @@ class CheckoutApi extends TokenizedBaseApi
     public function create( $mode, $callbackUrl = null, $payerReference = null, $agreementId = null, $amount = null, $merchantInvoiceNumber = null, $currency = 'BDT', $intent = null )
     {
         return $this->json([
-            'mode' => $mode,
-            'callbackURL' => is_null($callbackUrl) ? $this->config [BkashKey::CALL_BACK_URL] : $callbackUrl,
-            'payerReference' => $payerReference,
-            'agreementID' => $agreementId,
-            'amount' => $amount,
-            'currency' => $currency,
-            'intent' => $intent,
+            'mode'                  => $mode,
+            'callbackURL'           => is_null($callbackUrl) ? $this->config [ BkashKey::CALL_BACK_URL ] : $callbackUrl,
+            'payerReference'        => $payerReference,
+            'agreementID'           => $agreementId,
+            'amount'                => $amount,
+            'currency'              => $currency,
+            'intent'                => $intent,
             'merchantInvoiceNumber' => $merchantInvoiceNumber
         ])->post('/create');
     }

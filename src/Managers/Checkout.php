@@ -45,21 +45,39 @@ class Checkout extends BkashManager
         $this->paymentApi = new PaymentApi($config);
     }
 
+    /**
+     * @return \Apiz\AbstractApi|bool
+     */
     public function payment()
     {
         return ( new PaymentApi($this->config) )->authorization($this->getToken());
     }
 
+    /**
+     * @return \Apiz\AbstractApi|bool
+     */
     public function payout()
     {
         return ( new PayoutApi($this->config) )->authorization($this->getToken());
     }
 
+    /**
+     * @return \Apiz\AbstractApi|bool
+     */
     public function support()
     {
         return ( new SupportApi($this->config) )->authorization($this->getToken());
     }
 
+    /**
+     * @param $amount
+     * @param $merchantInvoiceNumber
+     * @param string $intent
+     * @param string $currency
+     * @param null $merchantAssociationInfo
+     *
+     * @return mixed
+     */
     public function createPayment( $amount, $merchantInvoiceNumber, $intent = 'sale', $currency = 'BDT', $merchantAssociationInfo = null )
     {
         $response = $this->paymentApi->authorization($this->getToken())->create($amount, $merchantInvoiceNumber, $intent, $currency, $merchantAssociationInfo);
@@ -67,6 +85,11 @@ class Checkout extends BkashManager
         return $response();
     }
 
+    /**
+     * @param $paymentId
+     *
+     * @return mixed
+     */
     public function executePayment( $paymentId )
     {
         $response = $this->paymentApi->authorization($this->getToken())->execute($paymentId);
@@ -74,6 +97,11 @@ class Checkout extends BkashManager
         return $response();
     }
 
+    /**
+     * @param $paymentId
+     *
+     * @return mixed
+     */
     public function capturePayment( $paymentId )
     {
         $response = $this->paymentApi->authorization($this->getToken())->capture($paymentId);
@@ -81,6 +109,11 @@ class Checkout extends BkashManager
         return $response();
     }
 
+    /**
+     * @param $paymentId
+     *
+     * @return mixed
+     */
     public function queryPayment( $paymentId )
     {
         $response = $this->paymentApi->authorization($this->getToken())->queryPayment($paymentId);
@@ -88,6 +121,11 @@ class Checkout extends BkashManager
         return $response();
     }
 
+    /**
+     * @param $paymentId
+     *
+     * @return mixed
+     */
     public function voidPayment( $paymentId )
     {
         $response = $this->paymentApi->authorization($this->getToken())->void($paymentId);
@@ -95,6 +133,14 @@ class Checkout extends BkashManager
         return $response();
     }
 
+    /**
+     * @param $amount
+     * @param $merchantInvoiceNumber
+     * @param $receiverMSISDN
+     * @param string $currency
+     *
+     * @return mixed
+     */
     public function b2cPayment( $amount, $merchantInvoiceNumber, $receiverMSISDN, $currency = 'BDT' )
     {
         $response = $this->payoutApi->authorization($this->getToken())->b2cPayment($amount, $merchantInvoiceNumber, $receiverMSISDN, $currency);
@@ -102,6 +148,9 @@ class Checkout extends BkashManager
         return $response();
     }
 
+    /**
+     * @return mixed
+     */
     public function queryOrganizationBalance()
     {
         $response = $this->supportApi->authorization($this->getToken())->queryOrganizationBalance();
@@ -109,6 +158,13 @@ class Checkout extends BkashManager
         return $response();
     }
 
+    /**
+     * @param $amount
+     * @param $transferType
+     * @param string $currency
+     *
+     * @return mixed
+     */
     public function intraAccountTransfer( $amount, $transferType, $currency = 'BDT' )
     {
         $response = $this->supportApi->authorization($this->getToken())->intraAccountTransfer($amount, $transferType, $currency);
@@ -116,6 +172,11 @@ class Checkout extends BkashManager
         return $response();
     }
 
+    /**
+     * @param $trxId
+     *
+     * @return mixed
+     */
     public function searchTransaction( $trxId )
     {
         $response = $this->supportApi->authorization($this->getToken())->searchTransaction($trxId);

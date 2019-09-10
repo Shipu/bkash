@@ -16,13 +16,13 @@ class PayoutApi extends CheckoutBaseApi
      *
      * @return mixed
      */
-    public function b2cPayment($amount,  $merchantInvoiceNumber, $receiverMSISDN, $currency = 'BDT')
+    public function b2cPayment( $amount, $merchantInvoiceNumber, $receiverMSISDN, $currency = 'BDT' )
     {
         return $this->json([
-            'amount' => $amount,
+            'amount'                => $amount,
             'merchantInvoiceNumber' => $merchantInvoiceNumber,
-            'receiverMSISDN' => $receiverMSISDN,
-            'currency' => $currency
+            'receiverMSISDN'        => $receiverMSISDN,
+            'currency'              => $currency
         ])->post('/payment/b2cPayment');
     }
 }

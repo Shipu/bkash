@@ -3,11 +3,11 @@
     "type": "library",
     "require": {
         "php": ">=5.6",
-        "nahid/apiz": "3.0.*"
+        "nahid/apiz": "3.0.*",
+        "vlucas/phpdotenv": "^3.4"
     },
     "require-dev": {
-        "symfony/var-dumper": "^4.3",
-        "vlucas/phpdotenv": "^3.4"
+        "symfony/var-dumper": "^4.3"
     },
     "license": "CC-BY-3.0",
     "authors": [

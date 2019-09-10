@@ -18,13 +18,13 @@ class PaymentApi extends CheckoutBaseApi
      *
      * @return mixed
      */
-    public function create($amount, $merchantInvoiceNumber, $intent = 'sale', $currency = 'BDT', $merchantAssociationInfo = null)
+    public function create( $amount, $merchantInvoiceNumber, $intent = 'sale', $currency = 'BDT', $merchantAssociationInfo = null )
     {
         return $this->json([
-            'amount' => $amount,
-            'merchantInvoiceNumber' => $merchantInvoiceNumber,
-            'intent' => $intent,
-            'currency' => $currency,
+            'amount'                  => $amount,
+            'merchantInvoiceNumber'   => $merchantInvoiceNumber,
+            'intent'                  => $intent,
+            'currency'                => $currency,
             'merchantAssociationInfo' => $merchantAssociationInfo
         ])->post('/payment/create');
     }
@@ -36,7 +36,7 @@ class PaymentApi extends CheckoutBaseApi
      */
     public function execute( $paymentId )
     {
-        return $this->post('/payment/execute/'.$paymentId);
+        return $this->post('/payment/execute/' . $paymentId);
     }
 
     /**
@@ -46,7 +46,7 @@ class PaymentApi extends CheckoutBaseApi
      */
     public function capture( $paymentId )
     {
-        return $this->post('/payment/capture/'.$paymentId);
+        return $this->post('/payment/capture/' . $paymentId);
     }
 
     /**
@@ -56,7 +56,7 @@ class PaymentApi extends CheckoutBaseApi
      */
     public function queryPayment( $paymentId )
     {
-        return $this->get('/payment/query/'.$paymentId);
+        return $this->get('/payment/query/' . $paymentId);
     }
 
     /**
@@ -66,7 +66,7 @@ class PaymentApi extends CheckoutBaseApi
      */
     public function void( $paymentId )
     {
-        return $this->post('/payment/void/'.$paymentId);
+        return $this->post('/payment/void/' . $paymentId);
     }
 
 }

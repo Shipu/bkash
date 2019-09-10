@@ -20,15 +20,15 @@ class PaymentApi extends TokenizedBaseApi
      *
      * @return mixed
      */
-    public function create($agreementId, $amount, $merchantInvoiceNumber, $callbackUrl = null, $intent = 'sale', $currency = 'BDT')
+    public function create( $agreementId, $amount, $merchantInvoiceNumber, $callbackUrl = null, $intent = 'sale', $currency = 'BDT' )
     {
         return $this->json([
-            'agreementID' => $agreementId,
-            'amount' => $amount,
+            'agreementID'           => $agreementId,
+            'amount'                => $amount,
             'merchantInvoiceNumber' => $merchantInvoiceNumber,
-            'intent' => $intent,
-            'currency' => $currency,
-            'callbackURL' => is_null($callbackUrl) ? $this->config [BkashKey::CALL_BACK_URL] : $callbackUrl
+            'intent'                => $intent,
+            'currency'              => $currency,
+            'callbackURL'           => is_null($callbackUrl) ? $this->config [ BkashKey::CALL_BACK_URL ] : $callbackUrl
         ])->post('/payment/create');
     }
 

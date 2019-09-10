@@ -10,14 +10,25 @@ use Shipu\Bkash\Enums\BkashKey;
  */
 class AgreementApi extends TokenizedBaseApi
 {
-    public function create($payerReference, $callbackUrl = null)
+    /**
+     * @param $payerReference
+     * @param null $callbackUrl
+     *
+     * @return mixed
+     */
+    public function create( $payerReference, $callbackUrl = null )
     {
         return $this->json([
             'payerReference' => $payerReference,
-            'callbackURL' => is_null($callbackUrl) ? $this->config [BkashKey::CALL_BACK_URL] : $callbackUrl
+            'callbackURL'    => is_null($callbackUrl) ? $this->config [ BkashKey::CALL_BACK_URL ] : $callbackUrl
         ])->post('/agreement/create');
     }
 
+    /**
+     * @param $paymentId
+     *
+     * @return mixed
+     */
     public function execute( $paymentId )
     {
         return $this->json([
@@ -25,6 +36,11 @@ class AgreementApi extends TokenizedBaseApi
         ])->post('/agreement/execute');
     }
 
+    /**
+     * @param $agreementId
+     *
+     * @return mixed
+     */
     public function status( $agreementId )
     {
         return $this->json([
@@ -32,6 +48,11 @@ class AgreementApi extends TokenizedBaseApi
         ])->post('/agreement/status');
     }
 
+    /**
+     * @param $agreementId
+     *
+     * @return mixed
+     */
     public function cancel( $agreementId )
     {
         return $this->json([
