@@ -28,7 +28,6 @@ return [
         BkashKey::APP_SECRET        => env("BKASH_CHECKOUT_APP_SECRET", ""),
         BkashKey::USER_NAME         => env("BKASH_CHECKOUT_USER_NAME", ""),
         BkashKey::PASSWORD          => env("BKASH_CHECKOUT_PASSWORD", ""),
-        BkashKey::CALL_BACK_URL     => env("BKASH_CHECKOUT_CALL_BACK_URL", ""),
         BkashKey::SANDBOX_SCRIPT    => env("BKASH_CHECKOUT_SANDBOX_SCRIPT", ""),
         BkashKey::PRODUCTION_SCRIPT => env("BKASH_CHECKOUT_PRODUCTION_SCRIPT", ""),
         BkashKey::TOKEN             => function ( $config ) {
