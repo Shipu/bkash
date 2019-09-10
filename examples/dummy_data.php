@@ -4,17 +4,17 @@ $orders = [
     [
         'code'   => 'Order001',
         'ref_no'   => 'R001',
-        'amount' => '5'
+        'amount' => rand(1, 12)
     ],
     [
         'code'   => 'Order002',
         'ref_no'   => 'R002',
-        'amount' => '7'
+        'amount' => rand(1, 12)
     ],
     [
         'code'   => 'Order003',
         'ref_no'   => 'R003',
-        'amount' => '10'
+        'amount' => rand(1, 12)
     ],
 ];
 

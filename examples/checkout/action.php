@@ -1,11 +1,6 @@
 <?php
 
-use Shipu\Bkash\Enums\BkashKey;
-use Shipu\Bkash\Enums\BkashSubDomainType;
-
-require_once './composer_load.php';
-
-$tokenized = new Shipu\Bkash\Managers\Tokenized($config[BkashSubDomainType::CHECKOUT]);
+require_once './../composer_load.php';
 
 $data = $_POST;
 ?>
@@ -19,14 +14,28 @@ $data = $_POST;
     <title>Bkash Checkout</title>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
+
+    <style>
+        html {
+            margin: 0;
+            padding: 0;
+        }
+        #bKashFrameWrapper {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
 </head>
 <body>
+
 <span id="bKash_button"></span>
 
 
 <script type="text/javascript">
   $(function () {
+    // Change script url when it's live
     var scriptLink = 'https://scripts.sandbox.bka.sh/versions/1.2.0-beta/checkout/bKash-checkout-sandbox.js';
+
     var successUrl = '<?=$data["success_url"]?>';
     var failedUrl = '<?=$data["failed_url"]?>';
     var amount = '<?=$data["amount"]?>';
@@ -74,12 +83,11 @@ $data = $_POST;
           createRequest: function (request) {
             // write your logic
             $.ajax({
-              url: '{{ route("payment.bkash.checkout.create") }}',
+              url: './create_payment.php',
               type: 'POST',
-              contentType: 'application/json',
-              data: JSON.stringify(request),
+              data: request,
               success: function (response) {
-                data = response.data;
+                data = JSON.parse(response);
                 if (data && data.paymentID != null) {
                   paymentID = data.paymentID;
                   bKash.create().onSuccess(data);
@@ -90,6 +98,7 @@ $data = $_POST;
               },
               error: function (xhr, textStatus, errorThrown) {
                 bKash.create().onError();
+                console.log(xhr);
                 window.location.href = failedUrl+"&n_type=error&n_msg=Sorry, your payment was unsuccessful !!! Invalid Request";
               }
             });
@@ -97,12 +106,11 @@ $data = $_POST;
           },
           executeRequestOnAuthorization: function () {
             $.ajax({
-              url: '{{ route("payment.bkash.checkout.execute") }}' + '/' + paymentID,
+              url: './execute_payment.php',
               type: 'POST',
-              contentType: 'application/json',
-              data: JSON.stringify(bkashPaymentRequest),
+              data: {paymentId: paymentID},
               success: function (response) {
-                data = response.data;
+                data = JSON.parse(response);
                 if (data && data.paymentID != null) {
                   paymentID = null;
                   window.location.href = successUrl+"&n_type=success&n_key=payment_done";
@@ -120,23 +128,14 @@ $data = $_POST;
 
           },
           onClose : function () {
-            $.ajax({
-              url: '{{ route("payment.bkash.checkout.close") }}',
-              type: 'POST',
-              contentType: 'application/json',
-              success: function (response) {
-                window.location.href = failedUrl"&n_type=error&n_msg=Sorry, your payment was unsuccessful !!! Please try again !!!";
-              },
-              error: function () {
-                window.location.href = failedUrl+"&n_type=error&n_msg=Sorry, your payment was unsuccessful !!! Please try again !!!";
-              }
-            });
+            window.location.href = failedUrl+"&n_type=error&n_msg=Sorry, your payment was unsuccessful !!! Please try again !!!";
           }
         });
 
         $('#bKash_button').click();
 
       });
+      // window.location.replace(window.location.href);
   });
 </script>
 </body>

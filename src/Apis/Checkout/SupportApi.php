@@ -28,9 +28,9 @@ class SupportApi extends CheckoutBaseApi
     public function intraAccountTransfer( $amount, $transferType, $currency = 'BDT' )
     {
         return $this->json([
-            'amount' => $amount,
-            'currency' => $currency,
-            'transferType'=> $transferType
+            'amount'       => $amount,
+            'currency'     => $currency,
+            'transferType' => $transferType
         ])->post('/payment/intraAccountTransfer');
     }
 
@@ -41,6 +41,6 @@ class SupportApi extends CheckoutBaseApi
      */
     public function searchTransaction( $trxId )
     {
-        return $this->get('/payment/search/'.$trxId);
+        return $this->get('/payment/search/' . $trxId);
     }
 }

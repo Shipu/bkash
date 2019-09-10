@@ -1,20 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: macbookpro
- * Date: 1/9/19
- * Time: 11:41 PM
- */
 
 namespace Shipu\Bkash\Traits;
 
 use Shipu\Bkash\Enums\BkashKey;
 
 /**
- * Trait TokenApi
+ * Trait TokenableApi
  * @package Shipu\Bkash\Traits
  */
-trait TokenApi
+trait TokenableApi
 {
     /**
      * @return mixed

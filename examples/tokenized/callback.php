@@ -2,10 +2,11 @@
 
 use Shipu\Bkash\Enums\BkashKey;
 use Shipu\Bkash\Enums\BkashSubDomainType;
+use Shipu\Bkash\Managers\Tokenized;
 
 require_once './../composer_load.php';
 
-$tokenized = new Shipu\Bkash\Managers\Tokenized($config[BkashSubDomainType::TOKENIZED]);
+$tokenized = new Tokenized($config[BkashSubDomainType::TOKENIZED]);
 
 $data = $_GET;
 
@@ -36,10 +37,10 @@ if($data['execute'] == 'Agreement') {
 
     if($payment->statusCode == '0000') {
         // Save "trxID" & create payment
-        dd($payment->trxID);
         header('Location: '.$data['success_url']);
     } else {
-        header('Location: '.$data['failed_url']);
+        $failedUrl = $data['failed_url'].'&msg='.$payment->statusMessage;
+        header('Location: '.$failedUrl);
     }
 }
 

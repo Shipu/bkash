@@ -3,7 +3,7 @@
 namespace Shipu\Bkash\Apis\Tokenized;
 
 use Shipu\Bkash\Apis\BaseApi;
-use Shipu\Bkash\Traits\TokenApi;
+use Shipu\Bkash\Traits\TokenableApi;
 
 /**
  * Class TokenizedBaseApi
@@ -11,7 +11,7 @@ use Shipu\Bkash\Traits\TokenApi;
  */
 class TokenizedBaseApi extends BaseApi
 {
-    use TokenApi;
+    use TokenableApi;
 
     protected function subDomain()
     {

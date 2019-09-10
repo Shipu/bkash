@@ -56,7 +56,7 @@ class Tokenized extends BkashManager
     /**
      * @return string
      */
-    public function subDomainType()
+    protected function subDomainType()
     {
         return BkashSubDomainType::TOKENIZED;
     }

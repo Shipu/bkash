@@ -2,8 +2,6 @@
 
 namespace Shipu\Bkash\Apis\Checkout;
 
-use Shipu\Bkash\Enums\BkashKey;
-
 /**
  * Class PaymentApi
  * @package Shipu\Bkash\Apis\Tokenized

@@ -4,6 +4,7 @@ namespace Shipu\Bkash\Enums;
 
 interface BkashKey
 {
+    const  TOKEN             = "token";
     const  SANDBOX           = "sandbox";
     const  VERSION           = "version";
     const  APP_KEY           = "app_key";

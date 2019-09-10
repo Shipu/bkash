@@ -3,7 +3,7 @@
 namespace Shipu\Bkash\Apis\Checkout;
 
 use Shipu\Bkash\Apis\BaseApi;
-use Shipu\Bkash\Traits\TokenApi;
+use Shipu\Bkash\Traits\TokenableApi;
 
 /**
  * Class CheckoutBaseApi
@@ -11,7 +11,7 @@ use Shipu\Bkash\Traits\TokenApi;
  */
 class CheckoutBaseApi extends BaseApi
 {
-    use TokenApi;
+    use TokenableApi;
 
     /**
      * @return string

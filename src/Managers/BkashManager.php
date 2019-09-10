@@ -2,7 +2,9 @@
 
 namespace Shipu\Bkash\Managers;
 
+use Shipu\Bkash\Enums\BkashKey;
 use Shipu\Bkash\Response\BkashResponse;
+use Shipu\Bkash\Traits\Macroable;
 
 /**
  * Class BkashManager
@@ -10,6 +12,8 @@ use Shipu\Bkash\Response\BkashResponse;
  */
 abstract class BkashManager
 {
+    use Macroable;
+
     /**
      * @var
      */
@@ -50,18 +54,24 @@ abstract class BkashManager
     /**
      * @return mixed
      */
-    abstract public function subDomainType();
+    abstract protected function subDomainType();
 
     /**
-     * @return |null
+     * @return null |null
      */
     public function getToken()
     {
         if ( is_null($this->token) ) {
-            $token = $this->tokenApi->grantToken();
 
-            $this->token        = $token()->id_token;
-            $this->refreshToken = $token()->refresh_token;
+            $this->token = collect_value(isset($this->config[ BkashKey::TOKEN ]) ? $this->config[ BkashKey::TOKEN ] : false, array_diff_key($this->config, [ 'token' => '' ]));
+
+            if ( empty($this->token) ) {
+                $token = $this->tokenApi->grantToken();
+
+                $this->token        = $token()->id_token;
+                $this->refreshToken = $token()->refresh_token;
+            }
+
         }
 
         return $this->token;

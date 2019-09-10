@@ -35,10 +35,9 @@ abstract class BaseApi extends AbstractApi
      */
     protected $config;
 
-    /**
-     * @var
-     */
-    protected $token;
+    protected $options = [
+        'timeout' => 30
+    ];
 
     /**
      * @var bool

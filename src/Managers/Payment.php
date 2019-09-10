@@ -2,7 +2,10 @@
 
 namespace Shipu\Bkash\Managers;
 
+use Shipu\Bkash\Apis\Payment\CheckoutApi;
 use Shipu\Bkash\Apis\Payment\DirectApi;
+use Shipu\Bkash\Apis\Payment\MandateApi;
+use Shipu\Bkash\Apis\Payment\PayoutApi;
 use Shipu\Bkash\Apis\Payment\SupportApi;
 use Shipu\Bkash\Enums\BkashSubDomainType;
 
@@ -25,6 +28,24 @@ class Payment extends BkashManager
     protected $supportApi;
 
     /**
+     *
+     * @var CheckoutApi
+     */
+    protected $checkoutApi;
+
+    /**
+     *
+     * @var PayoutApi
+     */
+    protected $payoutApi;
+
+    /**
+     *
+     * @var MandateApi
+     */
+    protected $mandateApi;
+
+    /**
      * Payment constructor.
      *
      * @param $config
@@ -35,12 +56,15 @@ class Payment extends BkashManager
 
         $this->directApi  = new DirectApi($config);
         $this->supportApi = new SupportApi($config);
+        $this->mandateApi = new MandateApi($config);
+        $this->payoutApi = new PayoutApi($config);
+        $this->checkoutApi = new CheckoutApi($config);
     }
 
     /**
      * @return string
      */
-    public function subDomainType()
+    protected function subDomainType()
     {
         return BkashSubDomainType::PAYMENT;
     }
@@ -53,6 +77,21 @@ class Payment extends BkashManager
     public function support()
     {
         return ( new SupportApi($this->config) )->authorization($this->getToken());
+    }
+
+    public function checkout()
+    {
+        return ( new CheckoutApi($this->config) )->authorization($this->getToken());
+    }
+
+    public function mandate()
+    {
+        return ( new MandateApi($this->config) )->authorization($this->getToken());
+    }
+
+    public function payout()
+    {
+        return ( new PayoutApi($this->config) )->authorization($this->getToken());
     }
 
 }

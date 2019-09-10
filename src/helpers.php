@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: shipu
- * Date: 5/8/19
- * Time: 1:24 AM
- */
 
 if (! function_exists('env')) {
     /**
@@ -19,7 +13,7 @@ if (! function_exists('env')) {
         $value = getenv($key);
 
         if ($value === false) {
-            return value($default);
+            return collect_value($default);
         }
 
         switch (strtolower($value)) {
@@ -46,15 +40,21 @@ if (! function_exists('env')) {
 }
 
 
-if (! function_exists('value')) {
+if (! function_exists('collect_value')) {
     /**
      * Return the default value of the given value.
      *
-     * @param  mixed  $value
+     * @param  mixed $value
+     * @param $params
+     *
      * @return mixed
      */
-    function value($value)
+    function collect_value( $value, ...$params)
     {
-        return $value instanceof Closure ? $value() : $value;
+        if(count($params) == 1) {
+            $params = $params[0];
+        }
+
+        return $value instanceof Closure ? $value($params) : $value;
     }
 }
