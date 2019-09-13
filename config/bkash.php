@@ -45,7 +45,6 @@ return [
         BkashKey::APP_SECRET    => env("BKASH_PAYMENT_APP_SECRET", ""),
         BkashKey::USER_NAME     => env("BKASH_PAYMENT_USER_NAME", ""),
         BkashKey::PASSWORD      => env("BKASH_PAYMENT_PASSWORD", ""),
-        BkashKey::CALL_BACK_URL => env("BKASH_PAYMENT_CALL_BACK_URL", ""),
         BkashKey::TOKEN         => null
     ]
 ];

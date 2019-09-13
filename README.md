@@ -36,23 +36,62 @@ php artisan vendor:publish --provider="Shipu\Bkash\BkashServiceProvider"
 
 ## Configuration
 
-This package is required some configurations.
+This package is required some configurations and bkash will provide when on-boarding. 
 
 #### For Tokenized
 
-**Create Tokenized Instance Using Enum**
+**Create Tokenized Api Instance Using Enum**
 ```php
+use Shipu\Bkash\Managers\Tokenized;
+use Shipu\Bkash\Enums\BkashKey;
+
 $tokenizedConfig = [
     BkashKey::SANDBOX       => true/false,
     BkashKey::VERSION       => "v1.2.0-beta",
-    BkashKey::APP_KEY       => "your app key (bkash will provide when on-boarding)",
-    BkashKey::APP_SECRET    => "your app secret (bkash will provide when on-boarding)",
-    BkashKey::USER_NAME     => "you user name (bkash will provide when on-boarding)",
-    BkashKey::PASSWORD      => "your password (bkash will provide when on-boarding)",
+    BkashKey::APP_KEY       => "your app key",
+    BkashKey::APP_SECRET    => "your app secret",
+    BkashKey::USER_NAME     => "you user name",
+    BkashKey::PASSWORD      => "your password",
     BkashKey::CALL_BACK_URL => "your call back url where you can write your logic",
 ];
 
 $tokenized = new Tokenized($tokenizedConfig);
+```
+
+**Create Checkout Api Instance Using Enum**
+```php
+use Shipu\Bkash\Managers\Checkout;
+use Shipu\Bkash\Enums\BkashKey;
+
+$checkoutConfig = [
+    BkashKey::SANDBOX       => true/false,
+    BkashKey::VERSION       => "v1.2.0-beta",
+    BkashKey::APP_KEY       => "your app key",
+    BkashKey::APP_SECRET    => "your app secret",
+    BkashKey::USER_NAME     => "you user name",
+    BkashKey::PASSWORD      => "your password",
+    BkashKey::SANDBOX_SCRIPT => "your sandbox script url"
+    BkashKey::PRODUCTION_SCRIPT => "your production script url",
+];
+
+$checkout = new Checkout($checkoutConfig);
+```
+
+**Create Payment Api Instance Using Enum**
+```php
+use Shipu\Bkash\Managers\Payment;
+use Shipu\Bkash\Enums\BkashKey;
+
+$paymentConfig = [
+    BkashKey::SANDBOX       => true/false,
+    BkashKey::VERSION       => "v1.2.0-beta",
+    BkashKey::APP_KEY       => "your app key",
+    BkashKey::APP_SECRET    => "your app secret",
+    BkashKey::USER_NAME     => "you user name",
+    BkashKey::PASSWORD      => "your password"
+];
+
+$payment = new Payment($paymentConfig);
 ```
 
 **Try with other way:**
@@ -67,35 +106,61 @@ $config = [
     BkashSubDomainType::TOKENIZED => [
         BkashKey::SANDBOX       => true/false,
         BkashKey::VERSION       => "v1.2.0-beta",
-        BkashKey::APP_KEY       => "your app key (bkash will provide when on-boarding)",
-        BkashKey::APP_SECRET    => "your app secret (bkash will provide when on-boarding)",
-        BkashKey::USER_NAME     => "you user name (bkash will provide when on-boarding)",
-        BkashKey::PASSWORD      => "your password (bkash will provide when on-boarding)",
+        BkashKey::APP_KEY       => "your app key",
+        BkashKey::APP_SECRET    => "your app secret",
+        BkashKey::USER_NAME     => "you user name",
+        BkashKey::PASSWORD      => "your password",
         BkashKey::CALL_BACK_URL => "your call back url where you can write your logic",
     ],
     BkashSubDomainType::CHECKOUT => [
         BkashKey`::SANDBOX       => true/false,
         BkashKey::VERSION       => "v1.2.0-beta",
-        BkashKey::APP_KEY       => "your app key (bkash will provide when on-boarding)",
-        BkashKey::APP_SECRET    => "your app secret (bkash will provide when on-boarding)",
-        BkashKey::USER_NAME     => "you user name (bkash will provide when on-boarding)",
-        BkashKey::PASSWORD      => "your password (bkash will provide when on-boarding)",
-        BkashKey::CALL_BACK_URL => "your call back url where you can write your logic",
-        BkashKey::SANDBOX_SCRIPT => "your script url (bkash will provide when on-boarding)",
+        BkashKey::APP_KEY       => "your app key",
+        BkashKey::APP_SECRET    => "your app secret",
+        BkashKey::USER_NAME     => "you user name",
+        BkashKey::PASSWORD      => "your password",
+        BkashKey::SANDBOX_SCRIPT => "your script url",
         BkashKey::PRODUCTION_SCRIPT => "your production script url (bkash will provide when on-boarding)",
     ],
     BkashSubDomainType::PAYMENT => [
         BkashKey::SANDBOX       => true/false,
         BkashKey::VERSION       => "v1.2.0-beta",
-        BkashKey::APP_KEY       => "your app key (bkash will provide when on-boarding)",
-        BkashKey::APP_SECRET    => "your app secret (bkash will provide when on-boarding)",
-        BkashKey::USER_NAME     => "you user name (bkash will provide when on-boarding)",
-        BkashKey::PASSWORD      => "your password (bkash will provide when on-boarding)",
-        BkashKey::CALL_BACK_URL => "your call back url where you can write your logic",
+        BkashKey::APP_KEY       => "your app key",
+        BkashKey::APP_SECRET    => "your app secret",
+        BkashKey::USER_NAME     => "you user name",
+        BkashKey::PASSWORD      => "your password"
     ]
 ];
 
 $tokenized = new Tokenized($config[BkashSubDomainType::TOKENIZED]);
 $checkout = new Checkout($config[BkashSubDomainType::CHECKOUT]);
 $payment = new Payment($config[BkashSubDomainType::PAYMENT]);
+```
+
+## Tokenized Api
+
+#### Agreement Api
+
+***Create Agreement***
+```php
+$payerReference = 'your payerReference';
+$callbackUrl = 'merchant callback url';
+
+$agreement = $tokenized->agreement()->create($payerReference, $callbackUrl);
+
+or 
+
+$agreement = $tokenized->createAgreement($payerReference, $callbackUrl);
+```
+`$callbackUrl` optional.
+
+***Execute Agreement***
+```php
+$paymentId = 'you can get paymentId after create agreement api';
+
+$agreement = $tokenized->agreement()->execute($paymentId);
+
+or 
+
+$agreement = $tokenized->executeAgreement($paymentId);
 ```
