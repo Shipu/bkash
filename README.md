@@ -139,6 +139,8 @@ $payment = new Payment($config[BkashSubDomainType::PAYMENT]);
 
 ## Tokenized Api
 
+you may try tokenized demo. 
+
 #### Agreement Api
 
 ***Create Agreement***
@@ -156,11 +158,33 @@ $agreement = $tokenized->createAgreement($payerReference, $callbackUrl);
 
 ***Execute Agreement***
 ```php
-$paymentId = 'you can get paymentId after create agreement api';
+$paymentId = 'you can get paymentId after create agreement api call';
 
 $agreement = $tokenized->agreement()->execute($paymentId);
 
 or 
 
 $agreement = $tokenized->executeAgreement($paymentId);
+```
+
+***Agreement Status***
+```php
+$agreementId = 'you can get agreementId after execute agreement api call';
+
+$agreement = $tokenized->agreement()->status($agreementId);
+
+or 
+
+$agreement = $tokenized->statusAgreement($agreementId);
+```
+
+***Cancel Agreement***
+```php
+$agreementId = 'you can get agreementId after execute agreement api call';
+
+$agreement = $tokenized->agreement()->cancel($agreementId);
+
+or 
+
+$agreement = $tokenized->cancelAgreement($agreementId);
 ```
