@@ -1,12 +1,12 @@
 # These are supported funding model platforms
 
 github: shipu
-patreon: shipu
-open_collective: shipu
-ko_fi: shipu
-tidelift: shipu/bkash
-community_bridge: bkash
-liberapay: shipu
-issuehunt: shipu
-otechie: shipu
-custom: # Replace with up to 4 custom sponsorship URLs e.g., ['link1', 'link2']
+# patreon: shipu
+# open_collective: shipu
+# ko_fi: shipu
+# tidelift: shipu/bkash
+# community_bridge: bkash
+# liberapay: shipu
+# issuehunt: shipu
+# otechie: shipu
+custom: [https://beerpay.io/Shipu/bkash]
