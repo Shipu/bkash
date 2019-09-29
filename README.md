@@ -17,3 +17,7 @@ Please refer to our extensive [Wiki documentation](https://github.com/Shipu/bkas
 - [All Contributors](../../contributors)
 
 Special Thanks to [Nahid Bin Azhar](https://github.com/nahid).
+
+## Support 
+
+For answers you may not find in the Wiki, avoid posting issues. Feel free to ask for the support over the email `shipuahamed01@gmail.com`.
