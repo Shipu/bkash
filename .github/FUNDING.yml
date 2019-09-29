@@ -1,12 +1,12 @@
 # These are supported funding model platforms
 
-github: shipu
+# github: shipu
 # patreon: shipu
 # open_collective: shipu
 # ko_fi: shipu
 # tidelift: shipu/bkash
 # community_bridge: bkash
-# liberapay: shipu
+liberapay: shipu
 # issuehunt: shipu
 # otechie: shipu
 custom: [https://beerpay.io/Shipu/bkash]
