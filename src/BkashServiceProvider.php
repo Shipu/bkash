@@ -51,11 +51,11 @@ class BkashServiceProvider extends ServiceProvider
         });
 
         $this->app->bind('bkash.checkout', function (Container $app) {
-            return new Tokenized($app['config']->get('bkash_api.'.BkashSubDomainType::CHECKOUT));
+            return new Checkout($app['config']->get('bkash_api.'.BkashSubDomainType::CHECKOUT));
         });
 
         $this->app->bind('bkash.payment', function (Container $app) {
-            return new Tokenized($app['config']->get('bkash_api.'.BkashSubDomainType::PAYMENT));
+            return new Payment($app['config']->get('bkash_api.'.BkashSubDomainType::PAYMENT));
         });
 
         $this->app->alias('bkash.tokenized', Tokenized::class);
