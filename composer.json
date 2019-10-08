@@ -9,7 +9,7 @@
     "require-dev": {
         "symfony/var-dumper": "^4.3"
     },
-    "license": "CC-BY-3.0",
+    "license": "MIT",
     "authors": [
         {
             "name": "Shipu Ahamed",
