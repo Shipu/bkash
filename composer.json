@@ -4,7 +4,7 @@
     "require": {
         "php": ">=5.6",
         "nahid/apiz": "3.0.*",
-        "vlucas/phpdotenv": "^3.4"
+        "vlucas/phpdotenv": "^5.0"
     },
     "require-dev": {
         "symfony/var-dumper": "^4.3"
