@@ -186,6 +186,24 @@ class Checkout extends BkashManager
         return $response();
     }
 
+
+    /**
+     * @param $amount
+     * @param $paymentID
+     * @param $trxID
+     * @param string $reason
+     * @param string $sku
+     *
+     * @return mixed
+     */
+    public function refundTransaction( $amount, $paymentID, $trxID, $reason, $sku )
+    {
+        $response = $this->supportApi->authorization($this->getToken())->refundTransaction($amount, $paymentID, $trxID, $reason, $sku);
+        
+        return $response();
+    }
+
+
     /**
      * @return string
      */
