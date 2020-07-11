@@ -43,4 +43,24 @@ class SupportApi extends CheckoutBaseApi
     {
         return $this->get('/payment/search/' . $trxId);
     }
+
+    /**
+     * @param $amount
+     * @param $paymentID
+     * @param $trxID
+     * @param string $reason
+     * @param string $sku
+     *
+     * @return mixed
+     */
+    public function refundTransaction( $amount, $paymentID, $trxID, $reason, $sku )
+    {
+        return $this->json([
+            'amount'    => $amount,
+            'paymentID' => $paymentID,
+            'trxID'     => $trxID,
+            'reason'    => $reason,
+            'sku'       => $sku
+        ])->post('/payment/refund');
+    }
 }
