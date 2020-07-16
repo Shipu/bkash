@@ -203,6 +203,19 @@ class Checkout extends BkashManager
         return $response();
     }
 
+    /**
+     * @param $paymentID
+     * @param $trxID
+     *
+     * @return mixed
+     */
+    public function refundStatus( $paymentID, $trxID )
+    {
+        $response = $this->supportApi->authorization($this->getToken())->refundStatus( $paymentID, $trxID );
+        
+        return $response();
+    }
+
 
     /**
      * @return string

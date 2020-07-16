@@ -63,4 +63,18 @@ class SupportApi extends CheckoutBaseApi
             'sku'       => $sku
         ])->post('/payment/refund');
     }
+
+    /**
+     * @param $paymentID
+     * @param $trxID
+     *
+     * @return mixed
+     */
+    public function refundStatus( $paymentID, $trxID )
+    {
+        return $this->json([
+            'paymentID' => $paymentID,
+            'trxID'     => $trxID
+        ])->post('/payment/refund');
+    }
 }
