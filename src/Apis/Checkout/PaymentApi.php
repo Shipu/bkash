@@ -20,7 +20,7 @@ class PaymentApi extends CheckoutBaseApi
      */
     public function create( $amount, $merchantInvoiceNumber, $intent = 'sale', $currency = 'BDT', $merchantAssociationInfo = null )
     {
-        return $this->json([
+        return $this->withJson([
             'amount'                  => $amount,
             'merchantInvoiceNumber'   => $merchantInvoiceNumber,
             'intent'                  => $intent,

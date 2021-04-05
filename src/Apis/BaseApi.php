@@ -8,6 +8,7 @@ use Shipu\Bkash\Response\BkashResponse;
 
 /**
  * Class BaseApi
+ *
  * @package Shipu\Bkash\Apis
  */
 abstract class BaseApi extends AbstractApi
@@ -28,18 +29,26 @@ abstract class BaseApi extends AbstractApi
     protected $response = BkashResponse::class;
 
     /**
-     * @var
+     * @var array
      */
     protected $config;
 
+    /**
+     * @var array
+     */
     protected $options = [
-        'timeout' => 30
+        'timeout' => 30,
     ];
 
     /**
      * @var bool
      */
     protected $authorization = false;
+
+    /**
+     * @var string
+     */
+    protected $prefix;
 
     /**
      * BaseApi constructor.
@@ -49,8 +58,8 @@ abstract class BaseApi extends AbstractApi
     public function __construct( $config )
     {
         $this->subDomain = $this->subDomain();
-        $this->env       = $config[ BkashKey::SANDBOX ] ? 'sandbox' : 'pay';
-        $this->prefix    = '/' . $config[ BkashKey::VERSION ] . $this->urlPrefix();
+        $this->env       = $config[BkashKey::SANDBOX] ? 'sandbox' : 'pay';
+        $this->prefix    = '/' . $config[BkashKey::VERSION] . $this->urlPrefix();
         $this->config    = $config;
 
         parent::__construct();
@@ -79,13 +88,33 @@ abstract class BaseApi extends AbstractApi
     }
 
     /**
+     * Get the base URL for the guzzle client.
+     *
+     * @return string
+     */
+    public function getBaseURL()
+    {
+        return $this->baseUrl();
+    }
+
+    /**
+     * Get the prefix for guzzle client.
+     *
+     * @return string
+     */
+    public function getPrefix()
+    {
+        return $this->prefix;
+    }
+
+    /**
      * @param $token
      *
      * @return AbstractApi|bool
      */
     public function authorization( $token )
     {
-        return $this->headers([
+        return $this->withHeaders([
             'Authorization' => $token,
             'X-APP-Key'     => $this->config[ BkashKey::APP_KEY ]
         ]);

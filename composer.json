@@ -3,13 +3,17 @@
     "type": "library",
     "require": {
         "php": ">=5.6",
-        "nahid/apiz": "3.0.*"
+        "nahid/apiz": "4.*"
     },
     "license": "MIT",
     "authors": [
         {
             "name": "Shipu Ahamed",
             "email": "shipuahamed01@gmail.com"
+        },
+        {
+            "name": "Aminul Islam",
+            "email": "me@aminul.net"
         }
     ],
     "autoload": {

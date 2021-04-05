@@ -19,7 +19,7 @@ class PayoutApi extends PaymentBaseApi
      */
     public function b2cPayment( $amount, $merchantInvoiceNumber, $receiverMSISDN, $currency = 'BDT' )
     {
-        return $this->json([
+        return $this->withJson([
             'amount'                => $amount,
             'merchantInvoiceNumber' => $merchantInvoiceNumber,
             'receiverMSISDN'        => $receiverMSISDN,

@@ -27,7 +27,7 @@ class SupportApi extends PaymentBaseApi
      */
     public function intraAccountTransfer( $amount, $transferType, $currency = 'BDT' )
     {
-        return $this->json([
+        return $this->withJson([
             'amount'       => $amount,
             'currency'     => $currency,
             'transferType' => $transferType
@@ -53,7 +53,7 @@ class SupportApi extends PaymentBaseApi
      */
     public function refund( $trxId, $amount, $currency = 'BDT' )
     {
-        return $this->json([
+        return $this->withJson([
             'amount'   => $amount,
             'currency' => $currency
         ])->post('/payment/refund/' . $trxId);
