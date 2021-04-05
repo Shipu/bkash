@@ -22,7 +22,7 @@ class PaymentApi extends TokenizedBaseApi
      */
     public function create( $agreementId, $amount, $merchantInvoiceNumber, $callbackUrl = null, $intent = 'sale', $currency = 'BDT' )
     {
-        return $this->json([
+        return $this->withJson([
             'agreementID'           => $agreementId,
             'amount'                => $amount,
             'merchantInvoiceNumber' => $merchantInvoiceNumber,
@@ -39,7 +39,7 @@ class PaymentApi extends TokenizedBaseApi
      */
     public function execute( $paymentId )
     {
-        return $this->json([
+        return $this->withJson([
             'paymentID' => $paymentId,
         ])->post('/payment/execute');
     }
@@ -51,7 +51,7 @@ class PaymentApi extends TokenizedBaseApi
      */
     public function status( $paymentId )
     {
-        return $this->json([
+        return $this->withJson([
             'paymentID' => $paymentId,
         ])->post('/payment/status');
     }

@@ -27,7 +27,7 @@ class SupportApi extends CheckoutBaseApi
      */
     public function intraAccountTransfer( $amount, $transferType, $currency = 'BDT' )
     {
-        return $this->json([
+        return $this->withJson([
             'amount'       => $amount,
             'currency'     => $currency,
             'transferType' => $transferType
@@ -41,7 +41,7 @@ class SupportApi extends CheckoutBaseApi
      */
     public function searchTransaction( $trxId )
     {
-        return $this->get('/payment/search/' . $trxId);
+        return $this->withJson('/payment/search/' . $trxId);
     }
 
     /**
@@ -55,7 +55,7 @@ class SupportApi extends CheckoutBaseApi
      */
     public function refundTransaction( $amount, $paymentID, $trxID, $reason, $sku )
     {
-        return $this->json([
+        return $this->withJson([
             'amount'    => $amount,
             'paymentID' => $paymentID,
             'trxID'     => $trxID,
@@ -72,7 +72,7 @@ class SupportApi extends CheckoutBaseApi
      */
     public function refundStatus( $paymentID, $trxID )
     {
-        return $this->json([
+        return $this->withJson([
             'paymentID' => $paymentID,
             'trxID'     => $trxID
         ])->post('/payment/refund');

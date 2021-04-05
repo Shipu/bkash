@@ -18,7 +18,7 @@ class DirectApi extends PaymentBaseApi
      */
     public function saleOrAuthorize( $mandateId, $amount, $merchantInvoiceNumber, $payerReferenceNumber, $intent = 'sale', $currency = 'BDT' )
     {
-        return $this->json([
+        return $this->withJson([
             'amount'                => $amount,
             'payerReferenceNumber'  => $payerReferenceNumber,
             'merchantInvoiceNumber' => $merchantInvoiceNumber,

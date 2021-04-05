@@ -18,7 +18,7 @@ class AgreementApi extends TokenizedBaseApi
      */
     public function create( $payerReference, $callbackUrl = null )
     {
-        return $this->json([
+        return $this->withJson([
             'payerReference' => $payerReference,
             'callbackURL'    => is_null($callbackUrl) ? $this->config [ BkashKey::CALL_BACK_URL ] : $callbackUrl
         ])->post('/agreement/create');
@@ -31,7 +31,7 @@ class AgreementApi extends TokenizedBaseApi
      */
     public function execute( $paymentId )
     {
-        return $this->json([
+        return $this->withJson([
             'paymentID' => $paymentId,
         ])->post('/agreement/execute');
     }
@@ -43,7 +43,7 @@ class AgreementApi extends TokenizedBaseApi
      */
     public function status( $agreementId )
     {
-        return $this->json([
+        return $this->withJson([
             'agreementID' => $agreementId,
         ])->post('/agreement/status');
     }
@@ -55,7 +55,7 @@ class AgreementApi extends TokenizedBaseApi
      */
     public function cancel( $agreementId )
     {
-        return $this->json([
+        return $this->withJson([
             'agreementID' => $agreementId,
         ])->post('/agreement/cancel');
     }

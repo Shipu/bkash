@@ -15,7 +15,7 @@ class SupportApi extends TokenizedBaseApi
      */
     public function searchTransaction( $trxId )
     {
-        return $this->json([
+        return $this->withJson([
             'trxID' => $trxId,
         ])->post('/general/searchTransaction');
     }

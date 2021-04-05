@@ -23,7 +23,7 @@ class MandateApi extends PaymentBaseApi
      */
     public function create( $firstPaymentDate, $frequency, $payerReferenceNumber, $requestType, $startRangeOfDays = null, $endRangeOfDays = null, $expiryDate = null, $amount = null, $merchantInvoiceNumber = null, $intent = 'sale', $currency = 'BDT' )
     {
-        return $this->json([
+        return $this->withJson([
             'firstPaymentDate'      => $firstPaymentDate,
             'frequency'             => $frequency,
             'payerReferenceNumber'  => $payerReferenceNumber,

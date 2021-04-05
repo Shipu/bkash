@@ -15,10 +15,10 @@ trait TokenableApi
      */
     public function grantToken()
     {
-        $tokenResponse = $this->json([
+        $tokenResponse = $this->withJson([
             'app_key'    => $this->config [ BkashKey::APP_KEY ],
             'app_secret' => $this->config [ BkashKey::APP_SECRET ],
-        ])->headers([
+        ])->withHeaders([
             'username' => $this->config [ BkashKey::USER_NAME ],
             'password' => $this->config [ BkashKey::PASSWORD ],
         ])->post('/token/grant');
@@ -33,11 +33,11 @@ trait TokenableApi
      */
     public function refreshToken( $refreshToken )
     {
-        $refreshTokenResponse = $this->json([
+        $refreshTokenResponse = $this->withJson([
             'app_key'       => $this->config [ BkashKey::APP_KEY ],
             'app_secret'    => $this->config [ BkashKey::APP_SECRET ],
             'refresh_token' => $refreshToken,
-        ])->headers([
+        ])->withHeaders([
             'username' => $this->config [ BkashKey::USER_NAME ],
             'password' => $this->config [ BkashKey::PASSWORD ],
         ])->post('/token/grant');
